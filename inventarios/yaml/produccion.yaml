@@ -1,0 +1,32 @@
+all:
+    hosts: {}
+    children:
+        webservers:
+            hosts:
+                MiMaquina:
+                    ansible_host: localhost
+                tomcat[1:50].prod.itnow.es:
+                    webserver: tomcat9
+            vars: 
+                webserver: tomcat8
+                ports: 
+                    - 443
+                    - 80
+        databases:
+            children:
+                mysql:
+                    hosts:
+                        mysqlserver1.prod
+                oracle:
+                    hosts:
+                        oracleserver1.prod
+                
+#ansible_connection=ssh|winrm       
+#ansible_host=IP o NOMBRE del host
+#ansible_port=22
+#ansible_user=
+#ansible_password
+#ansible_ssh_private_key_file
+#ansible_become=
+#ansible_become_method=
+#ansible_become_user=

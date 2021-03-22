@@ -1,0 +1,4 @@
+webserver: tomcat8
+ports: 
+    - 443
+    - 80
