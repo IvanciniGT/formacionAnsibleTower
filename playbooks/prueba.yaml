@@ -7,5 +7,5 @@
   tasks:
     - name: Tarea 1
       debug:
-        msg: Soy la primera tarea en ejecución
+        msg: Soy la primera tarea en ejecución por {{ nombre }} que tiene {{ edad }} años
     
