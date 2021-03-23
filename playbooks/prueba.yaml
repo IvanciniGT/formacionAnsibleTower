@@ -1,0 +1,11 @@
+- hosts: all
+  order: inventory
+  vars: {}
+  gather_facts: True
+
+        
+  tasks:
+    - name: Tarea 1
+      debug:
+        msg: Soy la primera tarea en ejecución
+    
