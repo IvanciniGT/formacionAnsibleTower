@@ -1,0 +1,70 @@
+- hosts: all
+  order: inventory
+  vars: 
+    puerto_servidor_bbdd: 3306
+    
+  gather_facts: True
+
+#1º Preparar mi máquina del servidor de BBDD
+#    - Actualizar SO
+#    - Dendendencias 
+#    - Configuraciones SO... Variables SO... Usuarios... Net        
+  tasks:
+    - name: Preparamos la máquina, dependiendo del SO
+      debug:
+        msg: |
+          Aqui voy a lanzar un proceso apt upgrade && apt update
+          si estuviera en Debian/Ubuntu, pero si estuviera en Centos, 
+          en su lugar trabajaría con YUM
+
+    - name: Trabajo en el SO Debian/Ubuntu
+      when: ansible_facts.distribution == "Ubuntu" or ansible_facts.distribution == "Debian"
+      block:
+
+        - name: Actualizar el sistema operativo vía apt
+          debug:
+            msg: apt upgrade
+
+        - name: Actualizar repos de librerias
+          debug:
+            msg: apt update
+
+        - name: Abir el puerto 8080 del firewall
+          when: ansible_facts.distribution == "Ubuntu"
+          debug:
+            msg: ufw --add-port={{ puerto_servidor_bbdd }}/tcp
+
+        - name: Abir el puerto 8080 del firewall
+          when: ansible_facts.distribution == "Debian"
+          debug:
+            msg: iptables..... {{ puerto_servidor_bbdd }}
+
+
+    - name: Trabajo en el SO Fedora/RH/CentOS
+      when: ansible_facts.distribution == "Redhat" or ansible_facts.distribution == "CentOS"
+      block:
+
+        - name: Actualizar el sistema operativo vía yum
+          debug:
+            msg: yum upgrade
+
+        - name: Actualizar el sistema operativo vía yum
+          debug:
+            msg: yum update
+
+        - name: Abir el puerto 8080 del firewall
+          debug:
+            msg: firewalld --add-port={{ puerto_servidor_bbdd }}/tcp
+
+
+    - name: Configurar Variables SO
+      debug:
+        msg: Configuro unas variables de SO
+        
+
+    - name: Crear usuarios
+      debug:
+        msg: Crear usuarios
+        
+        
+    

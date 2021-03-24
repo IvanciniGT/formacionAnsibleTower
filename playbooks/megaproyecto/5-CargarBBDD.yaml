@@ -1,0 +1,41 @@
+- hosts: all
+  order: inventory
+  vars: {}
+
+  gather_facts: True
+
+#5º Cargar datos y crear estructuras en la BBDD
+#    - Conectarme con BBDD
+#    - Borrar los datos previos
+#    - Crear estructuras
+#    - Crear datos
+  tasks:
+    - name: Conectarme con BBDD
+      debug:
+        msg: |
+          Aqui conecto con la BBDD
+          
+    - name: Borrar la BBDD
+      debug:
+        msg: |
+          Borrar la BBDD
+      tags:
+        - borrarBBDD
+        
+# Cuando llamamos a ansible-playbook bien vía consola o de Ansible Tower, podemos
+#   --tags [borrarBBDD]          >>>> Solamente las tareas con esos tags se ejecutan
+#   --skip-tags [borrarBBDD]     >>>> Evitar las tareas con esos tags
+#   En los valores: 
+#       all                      >>>>> Todas las tareas
+#       tagged                   >>>>> Todas las tareas que tenga ALGUN tag
+#       untagged                 >>>>> Todas las tareas que no lleven tag
+
+    - name: Crear estructuras BBDD
+      debug:
+        msg: |
+          Aqui Crear estructuras en la BBDD
+          
+    - name: Crear Datos
+      debug:
+        msg: |
+          Aqui creo los datos 

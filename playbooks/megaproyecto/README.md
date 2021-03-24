@@ -31,6 +31,7 @@ RESTAURAR INVENTARIO >>>>> 1 >>>> 3 >>>>>>>>>>>>> |
     - Arrancarlo
 5º Cargar datos y crear estructuras en la BBDD
     - Conectarme con BBDD
+    - Borrar los datos previos
     - Crear estructuras
     - Crear datos
 6º Montar app en el servidor de aplciaciones

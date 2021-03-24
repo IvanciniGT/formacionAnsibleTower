@@ -1,0 +1,35 @@
+- hosts: all
+  order: inventory
+  vars: {}
+
+  gather_facts: True
+
+#3º Instalar Servidor de BBDD
+#    - Descargarlo... Actualizar unos repos
+#    - Instalarlo
+#    - Configurarlo
+#    - Arrancarlo
+  tasks:
+    - name: Parar Servidor de BBDD
+      debug:
+        msg: |
+          Aqui paro el Servidor de BBDD si es que existe y está arrancado
+
+    - name: Descarga e Instalación del Servidor de BBDD
+      block:
+        - name: Descargar Servidor de BBDD
+          debug:
+            msg: |
+              Aqui descargo el Servidor de BBDD, con los comandos correspondientes
+    
+        - name: Instalar Servidor de BBDD
+          debug:
+            msg: |
+              Aqui instalo el Servidor de BBDD, con los comandos correspondientes
+
+    - name: Arrancar Servidor de BBDD
+      debug:
+        msg: |
+          Aqui arranco el Servidor de BBDD, con los comandos correspondientes
+
+    

@@ -1,0 +1,49 @@
+- hosts: all
+  order: inventory
+  vars: {}
+
+  gather_facts: True
+
+#3º Instalar Servidor de Aplciaciones
+#    - Descargarlo... Actualizar unos repos
+#    - Instalarlo
+#    - Configurarlo
+#    - Arrancarlo
+  tasks:
+    - name: Parar Servidor de Aplicaciones
+      debug:
+        msg: |
+          Aqui paro el Servidor de aplicaciones si es que existe y está arrancado
+      register: parada_servidor_aplicaciones # Genera una variable con la información de esta tarea
+            # .rc    >> Codigo de respuesta 
+            # .stdout    >> Salida estandar del programa
+            # .stderr    >> Salida error del programa
+            # .changed    >> Si ha provocado cambio 
+            # .failed    >> Si ha fallado 
+      ignore_errors: true
+
+    - name: Descarga e Instalación del Servidor de aplicaciones
+#      when: parada_servidor_aplicaciones.rc > 0
+      when: parada_servidor_aplicaciones.failed
+      block:
+        - name: Descargar Servidor de Aplicaciones
+          debug:
+            msg: |
+              Aqui descargo el Servidor de aplicaciones, con los comandos correspondientes
+    
+        - name: Instalar Servidor de Aplicaciones
+          debug:
+            msg: |
+              Aqui instalo el Servidor de aplicaciones, con los comandos correspondientes
+
+    - name: Configurar Servidor de aplicaciones
+      template:
+        src: ./configuracion_servidor_aplicaciones.xml
+        dest: /tmp/configuracion.xml
+        
+    - name: Arrancar Servidor de Aplicaciones
+      debug:
+        msg: |
+          Aqui arranco el Servidor de aplicaciones, con los comandos correspondientes
+
+    

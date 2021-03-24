@@ -1,0 +1,19 @@
+- hosts: all
+  order: inventory
+  vars: {}
+
+  gather_facts: True
+
+#6º Montar app en el servidor de aplciaciones
+#    - Conectarme con Servidor de aplciaciones
+#    - Instalar app
+  tasks:
+    - name: Conectarme con Servidor de aplciaciones
+      debug:
+        msg: |
+          Aqui me Conecto con Servidor de aplciaciones
+          
+    - name: Instalar app
+      debug:
+        msg: |
+          Instalar app
