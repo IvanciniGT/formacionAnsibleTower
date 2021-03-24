@@ -1,0 +1,13 @@
+- hosts: all
+  order: inventory
+  vars: {}
+
+  gather_facts: True
+
+
+  tasks:
+    - name: Deshacer Todo
+      debug:
+        msg: |
+          Aqui deshago todo lo que hice
+          
