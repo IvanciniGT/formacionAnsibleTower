@@ -21,6 +21,7 @@
             # .changed    >> Si ha provocado cambio 
             # .failed    >> Si ha fallado 
       ignore_errors: true
+      failed_when: true
 
     - name: Descarga e Instalación del Servidor de aplicaciones
 #      when: parada_servidor_aplicaciones.rc > 0
