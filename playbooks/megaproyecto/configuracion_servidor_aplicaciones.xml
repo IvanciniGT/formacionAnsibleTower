@@ -1,5 +1,5 @@
 <servidor>
     <nombre>{{ inventory_hostname | lower }}</nombre>
     <descripcion>Este es el servidor: {{ inventory_hostname }}</descripcion>
-    <ip>{{ ansible_facts.ipv4.address }}</ip>
+    <ip>{{ ansible_facts.ansible_eth0.ipv4.address }}</ip>
 </servidor>
