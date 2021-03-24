@@ -35,7 +35,14 @@
         msg: |
           Aqui Crear estructuras en la BBDD
           
-    - name: Crear Datos
+    - name: Crear Datos Marvel
       debug:
         msg: |
-          Aqui creo los datos 
+          Aqui doy de alta a {{ superheroe }}
+          
+    - name: Crear Datos DC
+      debug:
+        msg: |
+          Aqui doy de alta a {{ item }}
+      loop: "{{ superheroes_dc }}"
+           
