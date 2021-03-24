@@ -8,7 +8,7 @@
   tasks:
     - name: Probar la aplicacion. Prueba 1
       shell:
-        cmd: echo Esto parece que ha ido GUAY 
+        cmd: echo Esto parece que ha ido ERROR 
       register: prueba1
       failed_when: '"ERROR" in prueba1.stdout'
 
