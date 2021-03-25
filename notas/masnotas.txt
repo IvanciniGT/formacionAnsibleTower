@@ -1,0 +1,47 @@
+docker container create --name mijenkins -v jenkins_home:/var/jenkins_home -p 8082:8080 -p 50000:50000 jenkins/jenkins:lts
+docker start mijenkins
+docker logs mijenkins
+
+
+
+Jenkins
+    Orquestador de Tareas
+
+AWX/Tower
+    Orquestador de tareas ansible
+    Programación de esas tareas <<<< Cron 
+        Playbooks >>>> asociados a otros playbooks <<<< WORKFLOWS
+    
+Lanzar un proceso JENKINS
+    TERRAFORM    >>>>>> SI hay exito >>>>> PLAYBOOK
+    
+DEVOPS
+    Desarrollador haga commit de su codigo a un git
+    -> Jenkins y descargue el codigo 
+       Lo compile
+       Lo empaquete
+       Terraform crear un entorno de pruebas
+       Ansible para aprovisionar el nuevo entorno e instalar la app del usuario
+       Programa Selenium pruebas sobre la app del usuario
+       Si todo va bien
+        -> Guarde la app del usuario en un nexus Atrfactory
+       En cualquier caso: Tirar el entorno a la basura: TERRAFORM
+       
+    Cuando hay algo nuevo en un NEXUS -
+        Crear un entorno de produccion terraform, aprovisionarlo ansible
+        
+        
+curl http://54.155.253.38:8082/job/Prueba/build?token=MITOKENDESEGURIDAD
+
+
+
+Contactar desde AWX/TOWER ---> (WEBHOOK ---> OTRO SISTEMA)
+CONTACTAR DESDE OTRO SISTEMA CON AWX/TOWER ----> (API REST ---> AWX/TOWER)
+CONTACTAR DESDE OTRO SISTEMA CON AWX/TOWER ----> (WEBHOOKS  ---> AWX/TOWER)
+
+
+Jenkins >>> Api REST ---> AWX/TOWER
+            ^^^^^^^^
+            usuario/contraseña
+            
+SLiflKXCTUmq2TwqhyB5bGyxuTplesRQHwC9agBwPAgx9GzwBFsGPEVhnZV1oYdYF9soy8gwhTSOUrjYWMJeKbi6a4jH4LT1moRHGSTVB5CPbDQGesbc8IW7IQZdFprw

@@ -9,7 +9,10 @@ Funcionalidades que aporta AWX/Tower
 - MultiTenance >>> 1 instalación, varias organizaciones
 - Autenticación / Autorización de usuarios
 - Repositorio de playbooks/inventario <<<< Repo GIT 
-- Ejecución remota/centralizada HTTPs consola WEB
+- Ejecución remota/centralizada HTTPs:
+    - consola WEB
+    - API REST <<< Programas que pueda ejecutar acciones ansible
+
 
 
 Que cosas me faltan en AWX/Tower
